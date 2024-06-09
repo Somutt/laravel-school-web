@@ -1,22 +1,33 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { PageProps } from '@/types';
+import ManageButton from '@/Components/ManageButton';
 
-export default function Dashboard({ auth }: PageProps) {
+export default function Dashboard({ auth, laravelVersion, phpVersion }: PageProps<{ laravelVersion: string, phpVersion: string }>) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Management Panel</h2>}
         >
-            <Head title="Dashboard" />
+            <Head title="Panel" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">You're logged in!</div>
-                    </div>
+            <div className='flex flex-col justify-center items-center w-full mt-28'>
+                <div className='flex justify-evenly items-center w-full'>
+                        <Link href={route('add')}>
+                            <ManageButton>Professors</ManageButton>
+                        </Link>
+                    <ManageButton>Students</ManageButton>
+                </div>
+                <div className='flex justify-evenly items-center mt-8 w-full'>
+                    <ManageButton>Rooms</ManageButton>
+                    <ManageButton>Classes</ManageButton>
                 </div>
             </div>
+
+            <footer className="py-16 text-center text-sm text-black absolute bottom-0 w-full">
+                Laravel v{laravelVersion} (PHP v{phpVersion})
+            </footer>
+
         </AuthenticatedLayout>
     );
 }
