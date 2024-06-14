@@ -5,7 +5,6 @@ import { PageProps, ProfessorType } from "@/types";
 import { Head } from "@inertiajs/react";
 
 export default function AddManage({ auth, model, professors }: PageProps<{ model: string, professors: ProfessorType[] }>) {
-    console.log('model:', model, 'professors:', professors);
     return (
         <Authenticated
             user={auth.user}
@@ -15,8 +14,9 @@ export default function AddManage({ auth, model, professors }: PageProps<{ model
             <AddForm>
                 <AddForm.Professor />
             </AddForm>
-            <ul>
-                {professors.map( (p) => <Professor key={p.id} name={p.name} age={p.age} /> )}
+            <h2 className="font-semibold text-3xl px-4 mt-6 mb-1">Professors</h2>
+            <ul className="flex flex-col justify-center items-center bg-white w-full">
+                {professors.map( (p) => <Professor key={p.id} id={p.id} name={p.name} age={p.age} /> )}
             </ul>
         </Authenticated>
     );

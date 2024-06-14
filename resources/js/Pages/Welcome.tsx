@@ -25,6 +25,12 @@ export default function Welcome({ auth }: PageProps) {
                                     >
                                         Enter
                                     </Link>
+                                    <Link
+                                        href={route('register')}
+                                        className='px-3 py-2 mr-2 rounded-full border-2'
+                                    >
+                                        Register
+                                    </Link>
                                 </>
                             )}
                         </nav>

@@ -62,8 +62,10 @@ class ProfessorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Professor $professor)
+    public function destroy(Professor $professor): RedirectResponse
     {
-        //
+        $professor->delete();
+
+        return redirect(route('professors.index'));
     }
 }

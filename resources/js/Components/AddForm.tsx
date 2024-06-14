@@ -20,23 +20,26 @@ const AddFormProfessor = () => {
     return (
         <div>
             <form onSubmit={submit}>
-                <div className="flex items-center">
-                    <div className="mr-2">
-                        <InputLabel htmlFor="name" value="Name"/>
-                        <TextInput
-                            className="w-56"
-                            name="name" value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}/>
+                <div className="flex flex-col">
+                    <div className="flex items-center">
+                        <div className="mr-2">
+                            <InputLabel htmlFor="name" value="Name"/>
+                            <TextInput
+                                isFocused
+                                className="w-64"
+                                name="name" value={data.name}
+                                onChange={(e) => setData('name', e.target.value)}/>
+                        </div>
+                        <div className="mr-2">
+                            <InputLabel htmlFor="age" value="Age"/>
+                            <TextInput
+                                className="w-20"
+                                name="age" value={data.age} maxLength={2}
+                                onChange={(e) => setData('age', e.target.value)}
+                            />
+                        </div>
                     </div>
-                    <div className="mr-2">
-                        <InputLabel htmlFor="age" value="Age"/>
-                        <TextInput
-                            className="w-20"
-                            name="age" value={data.age} maxLength={2}
-                            onChange={(e) => setData('age', e.target.value)}
-                        />
-                    </div>
-                    <PrimaryButton className='mt-4' disabled={processing}>Add Professor</PrimaryButton>
+                    <PrimaryButton className='mt-4 py-4 px-7 w-fit' disabled={processing}>Add Professor</PrimaryButton>
                 </div>
                 <div>
                     <InputError message={errors.name} className='mt-2'/>
