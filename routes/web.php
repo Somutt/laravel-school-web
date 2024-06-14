@@ -24,7 +24,9 @@ Route::get('/add', function () {
     return Inertia::render('AddManage');
 })->middleware('auth')->name('add');
 
-Route::resource('/professors', ProfessorController::class)->only(['index', 'show', 'store']);
+Route::resource('/professors', ProfessorController::class)
+    ->middleware('auth')
+    ->only(['index', 'show', 'store']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

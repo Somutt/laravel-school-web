@@ -13,3 +13,11 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
     };
     ziggy: Config & { location: string };
 };
+
+export type ProfessorType = {
+    id?: number;
+    name: string;
+    age?: number;
+    created_at?: Date;
+    updated_at?: Date;
+}

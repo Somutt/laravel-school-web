@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->integer('age')->nullable();
-            $table->boolean('is_coordinator');
+            $table->boolean('is_coordinator')->default(false);
             $table->timestamps();
         });
     }
