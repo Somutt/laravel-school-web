@@ -20,7 +20,7 @@ const AddFormProfessor = () => {
     return (
         <div>
             <form onSubmit={submit}>
-                <div className="flex flex-col">
+                <div className="flex flex-col md:flex-row">
                     <div className="flex items-center">
                         <div className="mr-2">
                             <InputLabel htmlFor="name" value="Name"/>
@@ -39,7 +39,7 @@ const AddFormProfessor = () => {
                             />
                         </div>
                     </div>
-                    <PrimaryButton className='mt-4 py-4 px-7 w-fit' disabled={processing}>Add Professor</PrimaryButton>
+                    <PrimaryButton className='mt-4 py-4 px-7 w-fit md:px-4 md:py-2' disabled={processing}>Add Professor</PrimaryButton>
                 </div>
                 <div>
                     <InputError message={errors.name} className='mt-2'/>

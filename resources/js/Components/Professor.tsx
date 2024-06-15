@@ -21,7 +21,7 @@ export default function Professor({ professor }: ProfessorType) {
     }
 
     return (
-        <li className="flex justify-between items-center p-4 w-full text-lg" >
+        <li className="flex justify-between items-center p-4 w-full text-lg md:justify-evenly" >
             {editing ? 
                 <form onSubmit={submit}>
                     <TextInput 
