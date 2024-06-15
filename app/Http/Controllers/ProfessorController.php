@@ -54,9 +54,16 @@ class ProfessorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Professor $professor)
+    public function update(Request $request, Professor $professor): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|between:10,100',
+            'age' => 'integer|max:99|min:18'
+        ]);
+
+        $professor->update($validated);
+
+        return redirect(route('professors.index'));
     }
 
     /**

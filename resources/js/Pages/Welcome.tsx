@@ -21,13 +21,13 @@ export default function Welcome({ auth }: PageProps) {
                                 <>
                                     <Link
                                         href={route('login')}
-                                        className="px-3 py-2 mr-2 rounded-full border-2"
+                                        className="px-3 py-2 mr-2 border-2"
                                     >
                                         Enter
                                     </Link>
                                     <Link
                                         href={route('register')}
-                                        className='px-3 py-2 mr-2 rounded-full border-2'
+                                        className='px-3 py-2 mr-2 border-2'
                                     >
                                         Register
                                     </Link>

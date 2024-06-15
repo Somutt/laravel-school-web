@@ -14,10 +14,19 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
     ziggy: Config & { location: string };
 };
 
-export type ProfessorType = {
-    id?: number;
+export interface Professor {
+    id: number;
     name: string;
     age?: number;
     created_at?: Date;
     updated_at?: Date;
 }
+
+export type ProfessorType = {
+    professor: Professor;
+};
+
+export type ProfessorsProps = {
+    model?: string;
+    professors: Professor[];
+};
