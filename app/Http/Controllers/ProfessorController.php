@@ -17,7 +17,7 @@ class ProfessorController extends Controller
     {
         $professors = Professor::all();
 
-        return Inertia::render('Manage', [
+        return Inertia::render('ProfessorPage', [
             'model' => 'Professors',
             'professors' => $professors
         ]);

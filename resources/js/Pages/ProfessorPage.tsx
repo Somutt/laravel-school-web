@@ -4,7 +4,7 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { PageProps, ProfessorsProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
-export default function AddManage({ auth, professors }: PageProps<ProfessorsProps>) {
+export default function ProfessorPage({ auth, professors }: PageProps<ProfessorsProps>) {
     return (
         <Authenticated
             user={auth.user}
