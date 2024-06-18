@@ -1,5 +1,5 @@
 import { ProfessorType } from "@/types";
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { Link, useForm } from "@inertiajs/react";
 import { HighlightOff, ModeEdit } from "@mui/icons-material";
 import TextInput from "./TextInput";
@@ -14,7 +14,7 @@ export default function Professor({ professor }: ProfessorType) {
 
     const [editing, setEditing] = useState(false);
 
-    const submit = (e: React.FormEvent<HTMLElement>) => {
+    const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
         patch(route('professors.update', professor.id), { onSuccess: () => setEditing(false) })
@@ -37,14 +37,14 @@ export default function Professor({ professor }: ProfessorType) {
                         onChange={ (e) => setData('age', e.target.value) }
                     />
                     <div className='space-x-2'>
-                            <PrimaryButton className='mt-4'>Save</PrimaryButton>
-                            <button
-                                className='mt-4'
-                                onClick={() => { setEditing(false); reset(); clearErrors(); } }>
-                                Cancel
-                            </button>
-                            <InputError message={errors.name} className='mt-2'/>
-                            <InputError message={errors.age} className='mt-2'/>
+                        <PrimaryButton className='mt-4'>Save</PrimaryButton>
+                        <button
+                            className='mt-4'
+                            onClick={() => { setEditing(false); reset(); clearErrors(); } }>
+                            Cancel
+                        </button>
+                        <InputError message={errors.name} className='mt-2'/>
+                        <InputError message={errors.age} className='mt-2'/>
                     </div>
                 </form>
             : 
@@ -61,7 +61,6 @@ export default function Professor({ professor }: ProfessorType) {
                     <ModeEdit className='hover:text-green-500 mr-2' />
                 </button>
                 <Link
-                    className={`${editing ? 'hidden' : ''}`}
                     as="button"
                     method="delete"
                     href={route('professors.destroy', professor.id)}
