@@ -92,12 +92,12 @@ const AddFormStudent = () => {
                         </div>
                     </div>
                     <PrimaryButton className='mt-4 py-4 px-7 w-fit md:px-4 md:py-2' disabled={processing}>Add Student</PrimaryButton>
+                </div>
                     <div>
                         <InputError message={errors.name} className='mt-2'/>
                         <InputError message={errors.registry} className='mt-2'/>
                         <InputError message={errors.grade} className='mt-2'/>
                     </div>
-                </div>
             </form>
         </div>
     );

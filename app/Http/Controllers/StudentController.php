@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -32,9 +33,17 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|between:10,100|unique:students,name',
+            'registry' => 'required|between:5,6|regex:/^[0-9]+$/',
+            'grade' => 'nullable|string|size:2|regex:/^\d[a-zA-Z]$/',
+        ]);
+
+        Student::create($validated);
+
+        return redirect(route('students.index'));
     }
 
     /**
