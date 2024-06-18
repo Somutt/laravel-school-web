@@ -45,12 +45,12 @@ export default function Professor({ professor }: ProfessorType) {
                             </button>
                             <InputError message={errors.name} className='mt-2'/>
                             <InputError message={errors.age} className='mt-2'/>
-                        </div>
+                    </div>
                 </form>
             : 
                 <div className="flex justify-begin">
                     <span className='text-gray-800'>{professor.name}</span>
-                    <span className=' ml-4 text-gray-600'>{ professor.age }</span>
+                    <span className='ml-4 text-gray-600'>{ professor.age }</span>
                 </div>
             }
             <div>

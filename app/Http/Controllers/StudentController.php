@@ -23,14 +23,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
@@ -55,14 +47,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Student $student)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Student $student)
@@ -73,8 +57,10 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(Student $student): RedirectResponse
     {
-        //
+        $student->delete();
+
+        return redirect(route('students.index'));
     }
 }
