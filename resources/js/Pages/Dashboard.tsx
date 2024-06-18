@@ -13,10 +13,12 @@ export default function Dashboard({ auth, laravelVersion, phpVersion }: PageProp
 
             <div className='flex flex-col justify-center items-center w-full mt-28'>
                 <div className='flex justify-evenly items-center w-full'>
-                        <Link href={route('professors.index')}>
-                            <ManageButton>Professors</ManageButton>
-                        </Link>
-                    <ManageButton>Students</ManageButton>
+                    <Link href={route('professors.index')}>
+                        <ManageButton>Professors</ManageButton>
+                    </Link>
+                    <Link href={route('students.index')}>
+                        <ManageButton>Students</ManageButton>
+                    </Link>
                 </div>
                 <div className='flex justify-evenly items-center mt-8 w-full'>
                     <ManageButton>Rooms</ManageButton>

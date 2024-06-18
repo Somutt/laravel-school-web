@@ -7,13 +7,6 @@ export interface User {
     email_verified_at: string;
 }
 
-export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
-    auth: {
-        user: User;
-    };
-    ziggy: Config & { location: string };
-};
-
 export interface Professor {
     id: number;
     name: string;
@@ -22,11 +15,32 @@ export interface Professor {
     updated_at?: Date;
 }
 
+export interface Student {
+    id: number;
+    name: string;
+    registry: string;
+    grade: string;
+}
+
+export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
+    auth: {
+        user: User;
+    };
+    ziggy: Config & { location: string };
+};
+
 export type ProfessorType = {
     professor: Professor;
 };
 
 export type ProfessorsProps = {
-    model?: string;
     professors: Professor[];
+};
+
+export type StudentProps = {
+    students: Student[];
+};
+
+export type StudentType = {
+    student: Student;
 };

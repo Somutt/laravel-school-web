@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
-        //
+        $students = Student::all();
+
+        return Inertia::render("StudentPage", [
+            'students' => $students,
+        ]);
     }
 
     /**

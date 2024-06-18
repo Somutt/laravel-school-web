@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,6 +26,10 @@ Route::get('/add', function () {
 })->middleware('auth')->name('add');
 
 Route::resource('/professors', ProfessorController::class)
+    ->middleware('auth')
+    ->only(['index', 'store', 'destroy', 'update']);
+
+Route::resource('/students', StudentController::class)
     ->middleware('auth')
     ->only(['index', 'store', 'destroy', 'update']);
 
