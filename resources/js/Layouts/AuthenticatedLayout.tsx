@@ -31,11 +31,12 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className='inline-flex items-center px-3 py-2 border-b-2 border-transparent text-sm leading-4 font-medium text-gray-500 bg-white 
-                                                        hover:text-gray-700 hover:border-gray-300
+                                                className='inline-flex items-center pt-1 text-sm leading-4 font-medium text-gray-500 bg-white
+                                                        hover:text-gray-700
                                                         focus:outline-none transition ease-in-out duration-150' 
                                             >
-                                                <span className='capitalize'>
+                                                <span className={`capitalize border-b-2 hover:text-gray-700
+                                                            ${active ? ' hover:border-gray-300 border-transparent' : ' border-indigo-400'}`}>
                                                     {route().current('dashboard') ? 'management' : route().current()?.slice(0, -6)}
                                                 </span>
                                                 
@@ -61,6 +62,9 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                         </Dropdown.Link>
                                         <Dropdown.Link href={route('students.index')} method="get" as="button">
                                             Students
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href={route('rooms.index')} method="get" as="button">
+                                            Rooms
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
@@ -131,8 +135,17 @@ export default function Authenticated({ user, header, children }: PropsWithChild
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                     <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
+                        <ResponsiveNavLink href={route('dashboard')} active={active}>
                             Panel
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('professors.index')} active={route().current('professors.index')}>
+                            Professors
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('students.index')} active={route().current('students.index')}>
+                            Students
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('rooms.index')} active={route().current('rooms.index')}>
+                            Rooms
                         </ResponsiveNavLink>
                     </div>
 
