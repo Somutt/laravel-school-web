@@ -66,6 +66,9 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                         <Dropdown.Link href={route('rooms.index')} method="get" as="button">
                                             Rooms
                                         </Dropdown.Link>
+                                        <Dropdown.Link href={route('classes.index')} method="get" as="button">
+                                            Classes
+                                        </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>
@@ -146,6 +149,9 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                         </ResponsiveNavLink>
                         <ResponsiveNavLink href={route('rooms.index')} active={route().current('rooms.index')}>
                             Rooms
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('classes.index')} active={route().current('classes.index')}>
+                            Classes
                         </ResponsiveNavLink>
                     </div>
 
