@@ -21,7 +21,9 @@ export default function Dashboard({ auth, laravelVersion, phpVersion }: PageProp
                     </Link>
                 </div>
                 <div className='flex justify-evenly items-center mt-8 w-full'>
-                    <ManageButton>Rooms</ManageButton>
+                    <Link href={route('rooms.index')}>
+                        <ManageButton>Rooms</ManageButton>
+                    </Link>
                     <ManageButton>Classes</ManageButton>
                 </div>
             </div>

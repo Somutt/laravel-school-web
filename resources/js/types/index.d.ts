@@ -22,6 +22,12 @@ export interface Student {
     grade: string;
 }
 
+export interface Room {
+    id: number;
+    name: string;
+    capacity: number;
+}
+
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: User;
@@ -43,4 +49,12 @@ export type StudentProps = {
 
 export type StudentType = {
     student: Student;
+};
+
+export type RoomProps = {
+    rooms: Room[];
+};
+
+export type RoomType = {
+    room: Room;
 };

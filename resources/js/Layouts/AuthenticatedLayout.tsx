@@ -8,7 +8,6 @@ import { User } from '@/types';
 export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const active = route().current('dashboard');
-    console.log(active);
 
     return (
         <div className="flex flex-col min-h-screen bg-gray-100">
@@ -36,7 +35,9 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                                         hover:text-gray-700 hover:border-gray-300
                                                         focus:outline-none transition ease-in-out duration-150' 
                                             >
-                                                <span className='capitalize'>{route().current('dashboard') ? 'management' : route().current()?.slice(0, -6)}</span>
+                                                <span className='capitalize'>
+                                                    {route().current('dashboard') ? 'management' : route().current()?.slice(0, -6)}
+                                                </span>
                                                 
                                                 <svg
                                                     className="ms-2 -me-0.5 h-4 w-4"

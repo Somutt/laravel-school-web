@@ -3,46 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
-        //
-    }
+        $rooms = Room::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return Inertia::render('RoomPage', [
+            'rooms' => $rooms,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|between:2,30|unique:rooms,name',
+            'capacity' => 'required|integer|min:1',
+        ]);
+
+        Room::create([
+            'name' => ucfirst($validated['name']),
+            'capacity' => $validated['capacity'],
+        ]);
+
+        return redirect(route('rooms.index'));
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Room $room)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Room $room)
     {
         //
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,10 @@ Route::resource('/professors', ProfessorController::class)
     ->only(['index', 'store', 'destroy', 'update']);
 
 Route::resource('/students', StudentController::class)
+    ->middleware('auth')
+    ->only(['index', 'store', 'destroy', 'update']);
+
+Route::resource('/rooms', RoomController::class)
     ->middleware('auth')
     ->only(['index', 'store', 'destroy', 'update']);
 
