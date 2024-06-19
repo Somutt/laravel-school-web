@@ -27,7 +27,6 @@ class ProfessorController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
         $validated = $request->validate([
             'name' => 'required|string|between:10,100|unique:professors,name',
             'age' => 'integer|max:99|min:18'

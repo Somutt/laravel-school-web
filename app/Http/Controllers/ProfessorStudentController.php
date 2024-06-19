@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Professor;
 use App\Models\ProfessorStudent;
 use App\Models\Room;
-use App\Models\Student;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -18,14 +17,12 @@ class ProfessorStudentController extends Controller
     public function index(): Response
     {
         $professors = Professor::all();
-        $students = Student::all();
         $rooms = Room::all();
 
         $classes = ProfessorStudent::all();
 
         return Inertia::render('ClassesPage', [
             'professors' => $professors,
-            'students' => $students,
             'rooms' => $rooms,
             'classes' => $classes,
         ]);
@@ -36,7 +33,10 @@ class ProfessorStudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $professor = Professor::where('name', $request->professor)->first();
+        $room = Room::where('name', $request->room)->first();
+
+        dd($room->id);
     }
 
     /**
