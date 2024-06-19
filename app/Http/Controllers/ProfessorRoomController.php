@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Professor;
-use App\Models\ProfessorStudent;
+use App\Models\ProfessorRoom;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class ProfessorStudentController extends Controller
+class ProfessorRoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class ProfessorStudentController extends Controller
         $professors = Professor::all();
         $rooms = Room::all();
 
-        $classes = ProfessorStudent::all();
+        $classes = ProfessorRoom::all();
 
         return Inertia::render('ClassesPage', [
             'professors' => $professors,
@@ -42,15 +42,7 @@ class ProfessorStudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ProfessorStudent $professorStudent)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ProfessorStudent $professorStudent)
+    public function show(ProfessorRoom $professorRoom)
     {
         //
     }
@@ -58,7 +50,7 @@ class ProfessorStudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProfessorStudent $professorStudent)
+    public function update(Request $request, ProfessorRoom $professorRoom)
     {
         //
     }
@@ -66,7 +58,7 @@ class ProfessorStudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProfessorStudent $professorStudent)
+    public function destroy(ProfessorRoom $professorRoom)
     {
         //
     }
