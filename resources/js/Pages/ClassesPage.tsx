@@ -4,13 +4,18 @@ import { ClassProps, PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
 export default function ClassesPage({ auth, professors, rooms, classes }: PageProps<ClassProps>) {
+    console.log(professors.length)
     return (
         <Authenticated
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-red-800 leading-tight">Classes Manager</h2>}
         >
             <Head title="Classes" />
+            {
+            (professors.length && rooms.length) > 0 
+                && 
             <AddClass professors={professors} rooms={rooms} />
+            }
         </Authenticated>
     );
 }

@@ -30,7 +30,6 @@ export interface Room {
 
 export interface Class {
     professor: Professor;
-    student: Student;
     room: Room;
 }
 
