@@ -51,9 +51,19 @@ class RoomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request, Room $room): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|between:2,30',
+            'capacity' => 'required|integer|min:1',
+        ]);
+
+        $room->update([
+            'name' => ucfirst($validated['name']),
+            'capacity'=> $validated['capacity'],
+        ]);
+
+        return redirect(route('rooms.index'));
     }
 
     /**

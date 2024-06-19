@@ -22,7 +22,7 @@ export default function Student({ student }: StudentType) {
     }
     
     return (
-        <li className="flex justify-between items-center p-4 w-full text-lg md:justify-evenly" >
+        <li className="flex justify-between items-center p-4 w-full text-lg md:justify-between" >
             {editing ?
                 <form onSubmit={submit}>
                     <TextInput 
@@ -56,7 +56,7 @@ export default function Student({ student }: StudentType) {
                     </div>
                 </form>
             :
-                <div className="flex justify-begin">
+                <div className="flex justify-begin md:ml-10">
                     <span className="text-gray-800">{ student.name }</span>
                     <span className="ml-4 text-gray-800">{ student.registry }</span>
                     <span className="ml-4 text-gray-600">{ student.grade.toUpperCase() }</span>
