@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\ProfessorStudentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StudentController;
@@ -37,6 +38,9 @@ Route::resource('/students', StudentController::class)
 Route::resource('/rooms', RoomController::class)
     ->middleware('auth')
     ->only(['index', 'store', 'destroy', 'update']);
+
+Route::resource('/classes', ProfessorStudentController::class)
+    ->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

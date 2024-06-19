@@ -2,25 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Professor;
 use App\Models\ProfessorStudent;
+use App\Models\Room;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class ProfessorStudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
-        //
-    }
+        $professors = Professor::all();
+        $students = Student::all();
+        $rooms = Room::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $classes = ProfessorStudent::all();
+
+        return Inertia::render('ClassesPage', [
+            'professors' => $professors,
+            'students' => $students,
+            'rooms' => $rooms,
+            'classes' => $classes,
+        ]);
     }
 
     /**
