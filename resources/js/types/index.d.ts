@@ -69,7 +69,7 @@ export type ClassProps = {
     professors: Professor[];
     students: Student[];
     rooms: Room[];
-    classes: Class[]
+    classes?: Class[];
 };
 
 export type ClassType = {

@@ -17,7 +17,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href={route('dashboard')}>
-                                    <span className='text-lg font-extrabold'>SM</span>
+                                    <span className='text-lg font-extrabold'>School Manager</span>
                                 </Link>
                             </div>
 
