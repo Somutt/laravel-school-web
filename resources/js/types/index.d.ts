@@ -11,8 +11,7 @@ export interface Professor {
     id: number;
     name: string;
     age?: number;
-    created_at?: Date;
-    updated_at?: Date;
+    classroom_id?: number;
 }
 
 export interface Student {
@@ -26,6 +25,7 @@ export interface Room {
     id: number;
     name: string;
     capacity: number;
+    classroom_id?: number;
 }
 
 export interface Class {

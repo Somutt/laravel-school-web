@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('professors', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 30);
-            $table->integer('capacity');
+            $table->string('name', 100);
+            $table->integer('age')->nullable();
+            $table->boolean('is_coordinator')->default(false);
+            $table->foreignId('classroom_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('professors');
     }
 };

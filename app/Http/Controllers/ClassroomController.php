@@ -33,7 +33,13 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'professor' => 'required',
+            'room' => 'required',
+            'code' => 'required|string|size:5|regex:/^[A-Za-z0-9]+$/',
+        ]);
+
+        dd($validated);
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Classroom extends Model
 {
@@ -12,13 +12,13 @@ class Classroom extends Model
 
     protected $fillable = ['professor_id', 'room_id'];
 
-    public function professors(): HasOne
+    public function professor(): BelongsTo
     {
-        return $this->hasOne(Professor::class);
+        return $this->belongsTo(Professor::class);
     }
 
-    public function rooms(): HasOne
+    public function room(): BelongsTo
     {
-        return $this->hasOne(Room::class);
+        return $this->belongsTo(Room::class);
     }
 }

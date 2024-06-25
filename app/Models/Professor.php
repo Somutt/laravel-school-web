@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Professor extends Model
 {
@@ -12,7 +12,8 @@ class Professor extends Model
 
     protected $fillable = ['name', 'age'];
 
-    public function clasrooms(): BelongsToMany {
-        return $this->belongsToMany(Classroom::class);
+    public function clasrooms(): HasMany
+    {
+        return $this->hasMany(Classroom::class);
     }
 }
