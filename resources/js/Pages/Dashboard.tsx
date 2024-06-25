@@ -24,7 +24,7 @@ export default function Dashboard({ auth, laravelVersion, phpVersion }: PageProp
                     <Link href={route('rooms.index')}>
                         <ManageButton>Rooms</ManageButton>
                     </Link>
-                    <Link href={route('classes.index')}>
+                    <Link href={'/classes.index'}>
                         <ManageButton>Classes</ManageButton>
                     </Link>
                 </div>

@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\Professor;
-use App\Models\ProfessorRoom;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class ProfessorRoomController extends Controller
+class ClassroomController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): Response
     {
-        $professors = Professor::all();
+        $professors =  Professor::all();
         $rooms = Room::all();
 
-        $classes = ProfessorRoom::all();
+        $classes = Classroom::all();
 
         return Inertia::render('ClassesPage', [
             'professors' => $professors,
@@ -33,16 +33,13 @@ class ProfessorRoomController extends Controller
      */
     public function store(Request $request)
     {
-        $professor = Professor::where('name', $request->professor)->first();
-        $room = Room::where('name', $request->room)->first();
-
-        dd($room->id);
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(ProfessorRoom $professorRoom)
+    public function show(Classroom $classroom)
     {
         //
     }
@@ -50,7 +47,7 @@ class ProfessorRoomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProfessorRoom $professorRoom)
+    public function update(Request $request, Classroom $classroom)
     {
         //
     }
@@ -58,7 +55,7 @@ class ProfessorRoomController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProfessorRoom $professorRoom)
+    public function destroy(Classroom $classroom)
     {
         //
     }

@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ProfessorController;
-use App\Http\Controllers\ProfessorRoomController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StudentController;
@@ -39,7 +39,7 @@ Route::resource('/rooms', RoomController::class)
     ->middleware('auth')
     ->only(['index', 'store', 'destroy', 'update']);
 
-Route::resource('/classes', ProfessorRoomController::class)
+Route::resource('/classes', ClassroomController::class)
     ->middleware('auth');
 
 Route::middleware('auth')->group(function () {

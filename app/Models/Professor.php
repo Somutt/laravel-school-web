@@ -12,7 +12,7 @@ class Professor extends Model
 
     protected $fillable = ['name', 'age'];
 
-    public function professor_room(): BelongsToMany{
-        return $this->belongsToMany(ProfessorRoom::class);
+    public function clasrooms(): BelongsToMany {
+        return $this->belongsToMany(Classroom::class);
     }
 }
