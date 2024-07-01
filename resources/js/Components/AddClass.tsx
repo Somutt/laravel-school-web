@@ -35,7 +35,7 @@ export default function AddClass({ professors, rooms }: ClassProps) {
                             {rooms.map( (r) => <option key={r.id} >{r.name}</option> )}
                         </select>
 
-                        <InputLabel htmlFor="code" value="Code" className="ml-4" />
+                        <InputLabel htmlFor="code" value="code" className="ml-4" />
                         <TextInput 
                             isFocused
                             className="w-28 ml-2"

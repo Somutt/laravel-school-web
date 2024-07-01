@@ -10,7 +10,7 @@ class Classroom extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['professor_id', 'room_id'];
+    protected $fillable = ['code', 'professor_id', 'room_id'];
 
     public function professor(): BelongsTo
     {

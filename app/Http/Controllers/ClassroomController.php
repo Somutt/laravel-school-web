@@ -34,23 +34,20 @@ class ClassroomController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'professor' => 'required',
-            'room' => 'required',
+        $request->validate([
+            'professor' => 'required|exists:professors,name',
+            'room' => 'required|exists:rooms,name',
             'code' => 'required|string|size:5|regex:/^[A-Za-z0-9]+$/|unique:classrooms,code',
         ]);
 
-        $professor = Professor::where('name', $validated['professor'])->first();
-        $room = Room::where('name', $validated['room'])->first();
+        $professor_id = Professor::where('name', $request->professor)->first()->id;
+        $room_id = Room::where('name', $request->room)->first()->id;
 
-        dd($validated['code']);
-
-        $classroom = Classroom::create([
-            'code' => $validated['code'],
+        Classroom::create([
+            'code' => $request->code,
+            'professor_id' => $professor_id,
+            'room_id' => $room_id,
         ]);
-
-        $professor->clasrooms()->save($classroom);
-        $room->classrooms()->save($classroom);
 
         return redirect(route('classes.index'));
     }

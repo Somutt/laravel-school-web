@@ -28,11 +28,6 @@ export interface Room {
     classroom_id?: number;
 }
 
-export interface Class {
-    professor: Professor;
-    room: Room;
-}
-
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: User;
@@ -67,9 +62,4 @@ export type RoomType = {
 export type ClassProps = {
     professors: Professor[];
     rooms: Room[];
-    classes?: Class[];
-};
-
-export type ClassType = {
-    class: Class;
 };
