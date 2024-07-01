@@ -1,11 +1,12 @@
 import AddClass from "@/Components/AddClass";
+import Classroom from "@/Components/Classroom";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-import { ClassProps, PageProps } from "@/types";
+import { ClassroomProps, PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
-export default function ClassesPage({ auth, professors, rooms, classes }: PageProps<ClassProps>) {
+export default function ClassesPage({ auth, professors, rooms, classes }: PageProps<ClassroomProps>) {
     console.log(classes);
-    
+
     return (
         <Authenticated
             user={auth.user}
@@ -21,7 +22,11 @@ export default function ClassesPage({ auth, professors, rooms, classes }: PagePr
                 <ul className="flex flex-col justify-center items-center bg-white w-full
                 md:max-w-4xl md:mx-auto md:rounded-md"
                 >
-
+                    {classes ? 
+                        classes.map( (c) => <Classroom key={c.id} classroom={c} /> )
+                    : 
+                    ''
+                    }
                 </ul>
         </Authenticated>
     );

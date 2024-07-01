@@ -1,12 +1,12 @@
 import { FormEventHandler } from "react";
 import PrimaryButton from "./PrimaryButton";
-import { ClassProps } from "@/types";
+import { ClassroomProps } from "@/types";
 import InputLabel from "./InputLabel";
 import { useForm } from "@inertiajs/react";
 import TextInput from "./TextInput";
 import InputError from "./InputError";
 
-export default function AddClass({ professors, rooms }: ClassProps) {
+export default function AddClass({ professors, rooms }: ClassroomProps) {
     const { data, setData, post, reset, errors } = useForm({
         professor: professors[0].name,
         room: rooms[0].name,
@@ -35,7 +35,7 @@ export default function AddClass({ professors, rooms }: ClassProps) {
                             {rooms.map( (r) => <option key={r.id} >{r.name}</option> )}
                         </select>
 
-                        <InputLabel htmlFor="code" value="code" className="ml-4" />
+                        <InputLabel htmlFor="code" value="Code" className="ml-4" />
                         <TextInput 
                             isFocused
                             className="w-28 ml-2"

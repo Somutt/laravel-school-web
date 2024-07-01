@@ -33,7 +33,7 @@ class RoomController extends Controller
         ]);
 
         Room::create([
-            'name' => ucfirst($validated['name']),
+            'name' => ucwords($validated['name']),
             'capacity' => $validated['capacity'],
         ]);
 

@@ -20,7 +20,7 @@ class ClassroomController extends Controller
         $professors =  Professor::all();
         $rooms = Room::all();
 
-        $classes = Classroom::all();
+        $classes = Classroom::with('professor:id,name', 'room:id,name')->get();
 
         return Inertia::render('ClassesPage', [
             'professors' => $professors,
@@ -44,7 +44,7 @@ class ClassroomController extends Controller
         $room_id = Room::where('name', $request->room)->first()->id;
 
         Classroom::create([
-            'code' => $request->code,
+            'code' => strtoupper($request->code),
             'professor_id' => $professor_id,
             'room_id' => $room_id,
         ]);

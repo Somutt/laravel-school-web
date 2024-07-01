@@ -33,7 +33,7 @@ class ProfessorController extends Controller
         ]);
 
         Professor::create([
-            'name' => $validated['name'],
+            'name' => ucwords($validated['name']),
             'age' => $validated['age'],
             'is_coordinator' => false
         ]);
