@@ -39,7 +39,7 @@ Route::resource('/rooms', RoomController::class)
     ->middleware('auth')
     ->only(['index', 'store', 'destroy', 'update']);
 
-Route::resource('/classes', ClassroomController::class)
+Route::resource('/classrooms', ClassroomController::class)
     ->middleware('auth');
 
 Route::middleware('auth')->group(function () {

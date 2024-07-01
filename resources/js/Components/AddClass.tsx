@@ -16,7 +16,7 @@ export default function AddClass({ professors, rooms }: ClassroomProps) {
     const submitClass: FormEventHandler = (e) => {
         e.preventDefault();
 
-        post(route('classes.store'), { onSuccess: () => reset() })
+        post(route('classrooms.store'), { onSuccess: () => reset() })
     }
 
     return (

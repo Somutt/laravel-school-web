@@ -49,7 +49,7 @@ class ClassroomController extends Controller
             'room_id' => $room_id,
         ]);
 
-        return redirect(route('classes.index'));
+        return redirect(route('classrooms.index'));
     }
 
     /**
@@ -57,7 +57,7 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom)
     {
-        //
+        dd($classroom);
     }
 
     /**
@@ -71,8 +71,10 @@ class ClassroomController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Classroom $classroom)
+    public function destroy(Classroom $classroom): RedirectResponse
     {
-        //
+        $classroom->delete();
+
+        return redirect(route('classrooms.index'));
     }
 }
