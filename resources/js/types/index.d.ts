@@ -79,5 +79,6 @@ export type ClassroomsProps = {
 export type ClassroomProps = {
     professors: Professor[];
     rooms: Room[];
+    students?: Student[];
     classroom: Classroom;
 }

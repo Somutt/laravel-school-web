@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classroom;
 use App\Models\Professor;
 use App\Models\Room;
+use App\Models\Student;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -57,15 +58,17 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom): Response
     {
-        $complete_classroom = Classroom::where('code', $classroom->code)->with('professor:id,name', 'room:id,name')->first();
+        $complete_classroom = Classroom::where('code', $classroom->code)->with('professor:id,name', 'room:id,name', 'students')->first();
 
         $professors = Professor::all();
         $rooms = Room::all();
+        $students = Student::all();
 
         return Inertia::render('ClassPage', [
             'classroom'=> $complete_classroom,
             'professors' => $professors,
-            'rooms'=> $rooms,
+            'rooms' => $rooms,
+            'students' => $students,
         ]);
     }
 

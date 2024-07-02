@@ -3,7 +3,9 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { ClassroomProps, PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
-export default function ClassPage({ auth, classroom, professors, rooms }: PageProps<ClassroomProps>) {
+export default function ClassPage({ auth, classroom, professors, rooms, students }: PageProps<ClassroomProps>) {
+    console.log(classroom);
+
     return (
         <Authenticated
             user={auth.user}
@@ -14,6 +16,7 @@ export default function ClassPage({ auth, classroom, professors, rooms }: PagePr
                 <h2 className="font-semibold text-3xl mt-6">Class {classroom.code.toUpperCase()}</h2>
                 <ClassEdit professors={professors} classroom={classroom} rooms={rooms} />
             </div>
+            <h2 className="font-semibold text-3xl px-4 mt-6 mb-1 md:text-center">Students</h2>
         </Authenticated>
     );
 }
