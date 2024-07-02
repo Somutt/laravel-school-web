@@ -57,7 +57,7 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom): Response
     {
-        $complete_classroom = Classroom::find($classroom->id)->with('professor:id,name', 'room:id,name')->first();
+        $complete_classroom = Classroom::where('code', $classroom->code)->with('professor:id,name', 'room:id,name')->first();
 
         $professors = Professor::all();
         $rooms = Room::all();
@@ -72,9 +72,22 @@ class ClassroomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Classroom $classroom)
+    public function update(Request $request, Classroom $classroom): RedirectResponse
     {
-        dd($request);
+        $request->validate([
+            'professor' => 'required|exists:professors,name',
+            'room' => 'required|exists:rooms,name',
+        ]);
+
+        $professor_id = Professor::where('name', $request->professor)->first()->id;
+        $room_id = Room::where('name', $request->room)->first()->id;
+
+        $classroom->update([
+            'professor_id' => $professor_id,
+            'room_id' => $room_id,
+        ]);
+
+        return redirect(route('classrooms.show', $classroom->code));
     }
 
     /**

@@ -1,5 +1,4 @@
-import ClassProfessor from "@/Components/ClassProfessor";
-import ClassroomRoom from "@/Components/ClassroomRoom";
+import ClassEdit from "@/Components/ClassEdit";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { ClassroomProps, PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
@@ -13,8 +12,7 @@ export default function ClassPage({ auth, classroom, professors, rooms }: PagePr
             <Head title="Classroom" />
             <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h2 className="font-semibold text-3xl mt-6">Class {classroom.code.toUpperCase()}</h2>
-                <ClassProfessor professors={professors} classroom={classroom} rooms={rooms} />
-                <ClassroomRoom professors={professors} classroom={classroom} rooms={rooms} />
+                <ClassEdit professors={professors} classroom={classroom} rooms={rooms} />
             </div>
         </Authenticated>
     );
