@@ -7,6 +7,7 @@ import PrimaryButton from "./PrimaryButton";
 export default function ClassProfessor({ classroom, professors }: ClassroomProps) {
     const { data, setData, patch, reset } = useForm({
         professor: classroom.professor.name,
+        room: classroom.room.name
     });
 
     const [editingProfessor, setEditingProfessor] = useState(false);

@@ -74,7 +74,7 @@ class ClassroomController extends Controller
      */
     public function update(Request $request, Classroom $classroom)
     {
-        dd($request->professor);
+        dd($request);
     }
 
     /**
