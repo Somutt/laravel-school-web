@@ -1,10 +1,10 @@
-import { ClassroomProps } from "@/types";
+import { ClassroomEditProps } from "@/types";
 import { useForm } from "@inertiajs/react";
 import { FormEventHandler, useState } from "react";
 import { ModeEdit } from "@mui/icons-material";
 import PrimaryButton from "./PrimaryButton";
 
-export default function ClassEdit({ classroom, professors, rooms }: ClassroomProps) {
+export default function ClassroomEdit({ classroom, professors, rooms }: ClassroomEditProps) {
     const { data, setData, patch, reset } = useForm({
         professor: classroom.professor.name,
         room: classroom.room.name

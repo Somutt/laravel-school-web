@@ -33,6 +33,7 @@ export interface Classroom {
     code: string;
     professor: Professor;
     room: Room;
+    students?: Student[];
 }
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
@@ -52,10 +53,12 @@ export type ProfessorsProps = {
 
 export type StudentProps = {
     students: Student[];
+    classroom?: Classroom;
 };
 
 export type StudentType = {
     student: Student;
+    classroom?: Classroom;
 };
 
 export type RoomProps = {
@@ -76,9 +79,15 @@ export type ClassroomsProps = {
     classes?: Classroom[];
 };
 
+export type ClassroomEditProps = {
+    professors: Professor[];
+    rooms: Room[];
+    classroom: Classroom;
+};
+
 export type ClassroomProps = {
     professors: Professor[];
     rooms: Room[];
-    students?: Student[];
+    students: Student[];
     classroom: Classroom;
-}
+};
