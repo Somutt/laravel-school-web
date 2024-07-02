@@ -18,6 +18,17 @@ class ClassroomStudentController extends Controller
 
         $classroom = Classroom::find($request->classroom_id);
         $student = Student::where('name', $request->student)->first();
+        $check = [];
+
+        if ($classroom->students()->count() > 0) {
+            foreach ($classroom->students as $classroom_student) {
+                array_push($check, $classroom_student->id);
+            }
+
+            if (in_array($student->id, $check)) {
+                return redirect(route('classrooms.show', $classroom->code));
+            }
+        }
 
         $classroom->students()->attach($student->id);
 
