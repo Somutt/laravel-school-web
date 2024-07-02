@@ -1,12 +1,12 @@
 import { FormEventHandler } from "react";
 import PrimaryButton from "./PrimaryButton";
-import { ClassroomProps } from "@/types";
+import { ClassroomsProps } from "@/types";
 import InputLabel from "./InputLabel";
 import { useForm } from "@inertiajs/react";
 import TextInput from "./TextInput";
 import InputError from "./InputError";
 
-export default function AddClass({ professors, rooms }: ClassroomProps) {
+export default function AddClass({ professors, rooms }: ClassroomsProps) {
     const { data, setData, post, reset, errors } = useForm({
         professor: professors[0].name,
         room: rooms[0].name,

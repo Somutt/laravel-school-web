@@ -8,12 +8,12 @@ export default function Classroom({ classroom }: ClassroomType) {
             <Link 
                 as="button"
                 method="get"
-                href={route('classrooms.show', classroom.id)}
+                href={route('classrooms.show', classroom.code)}
             >
                 <div className="flex justify-begin md:ml-10">
                     <span className='text-gray-800'>{classroom.professor.name}</span>
                     <span className='ml-4 text-gray-800'>{classroom.room.name}</span>
-                    <span className='ml-4 text-gray-600'>{classroom.code}</span>
+                    <span className='ml-4 text-gray-600'>{classroom.code.toUpperCase()}</span>
                 </div>
             </Link>
             <div>

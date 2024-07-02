@@ -40,7 +40,12 @@ Route::resource('/rooms', RoomController::class)
     ->only(['index', 'store', 'destroy', 'update']);
 
 Route::resource('/classrooms', ClassroomController::class)
-    ->middleware('auth');
+    ->middleware('auth')
+    ->only(['index', 'store', 'destroy', 'update']);
+
+Route::get('/classrooms/{classroom:code}', [ClassroomController::class, 'show'])
+    ->middleware('auth')
+    ->name('classrooms.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

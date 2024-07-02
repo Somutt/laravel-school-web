@@ -1,12 +1,10 @@
 import AddClass from "@/Components/AddClass";
 import Classroom from "@/Components/Classroom";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-import { ClassroomProps, PageProps } from "@/types";
+import { ClassroomsProps, PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
-export default function ClassesPage({ auth, professors, rooms, classes }: PageProps<ClassroomProps>) {
-    console.log(classes);
-
+export default function ClassesPage({ auth, professors, rooms, classes }: PageProps<ClassroomsProps>) {
     return (
         <Authenticated
             user={auth.user}

@@ -44,7 +44,7 @@ class ClassroomController extends Controller
         $room_id = Room::where('name', $request->room)->first()->id;
 
         Classroom::create([
-            'code' => strtoupper($request->code),
+            'code' => strtolower($request->code),
             'professor_id' => $professor_id,
             'room_id' => $room_id,
         ]);
@@ -55,9 +55,18 @@ class ClassroomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Classroom $classroom)
+    public function show(Classroom $classroom): Response
     {
-        dd($classroom);
+        $complete_classroom = Classroom::find($classroom->id)->with('professor:id,name', 'room:id,name')->first();
+
+        $professors = Professor::all();
+        $rooms = Room::all();
+
+        return Inertia::render('ClassPage', [
+            'classroom'=> $complete_classroom,
+            'professors' => $professors,
+            'rooms'=> $rooms,
+        ]);
     }
 
     /**
@@ -65,7 +74,7 @@ class ClassroomController extends Controller
      */
     public function update(Request $request, Classroom $classroom)
     {
-        //
+        dd($request->professor);
     }
 
     /**

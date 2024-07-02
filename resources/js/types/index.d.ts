@@ -70,8 +70,14 @@ export type ClassroomType = {
     classroom: Classroom;
 };
 
-export type ClassroomProps = {
+export type ClassroomsProps = {
     professors: Professor[];
     rooms: Room[];
     classes?: Classroom[];
 };
+
+export type ClassroomProps = {
+    professors: Professor[];
+    rooms: Room[];
+    classroom: Classroom;
+}
